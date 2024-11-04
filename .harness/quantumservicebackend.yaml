@@ -1,0 +1,28 @@
+service:
+  name: soto-quantum-service-backend
+  identifier: sotoquantumservicebackend
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: quantumbankmanifest
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: alexsotoharness
+                  gitFetchType: Branch
+                  paths:
+                    - .harness/kubernetes/hsaab-quantum-bank-backend-deployment.yaml
+                    - .harness/kubernetes/hsaab-quantum-bank-backend-service.yaml
+                  repoName: quantum-bank
+                  branch: main
+              valuesPaths:
+                - .harness/kubernetes/hsaab-values.yaml
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+  gitOpsEnabled: false
+  orgIdentifier: SE_Sandbox
+  projectIdentifier: devX_super_team
