@@ -1,1 +1,1 @@
-image: soto/quantum-bank-backend:<+pipeline.sequenceId>
+image: alexsotoharness/quantum-bank-backend:<+pipeline.sequenceId>
